@@ -1,0 +1,342 @@
+/* COLOR PALLETTE
+-----------------------------*/
+/* 
+	BLACK 		- #202126
+	DARK GRAY	- #25252d
+	LIGHT GRAY	- #333352
+	PINK		- #c40147
+	BLUE		- #2867d5
+	AQUA		- #00ebd2
+*/
+
+ 
+/* new color pallette 12-7 
+-----------------------------------------
+	black 		- #2a2930
+	purple		- #554cac
+	pink		- #dd4cab
+	orange		- #fd526a
+	yellow		- #ffe14f
+	teal  		- #39c8ce
+*/
+
+
+
+/* typography styles
+---------------------------------------------*/
+@font-face {
+	font-family: 'ProximaNova-Light';
+	src: url('Proxima Nova/ProximaNova-Light.otf');
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('Proxima Nova/ProximaNova-Regular.otf');
+}
+
+body{
+	background-color: #ddd;
+	font-family: 'ProximaNova';
+	padding-bottom: 5em;
+	color: #554cac;
+}
+
+/* main page styles
+---------------------------------------------------*/
+
+#main-page {
+	background-color: white;
+	padding: 10px;
+	width: 98%;
+	margin: 5px auto;
+}
+
+#dashboard {
+	padding-bottom: 15px;
+	padding-right: 4px;
+	margin-top: 15px;
+	background-image: -webkit-gradient(linear, left bottom, right top, from(#5F4AAD), color-stop(50%, #49469B), to(#5F4AAD));
+	color: white;
+}
+
+/* navbar styles
+-----------------------------------------------------*/
+
+#my-navbar {
+	background-color: inherit;
+	border: none;
+	margin-bottom: 0;
+}
+
+#logo {
+	width: 50px;
+	height: auto;
+	margin: 5px 5px 3px 5px;
+}
+
+#logo-brand {
+	color: #554cac;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+#logo-brand:hover {
+	color: #39c8ce;
+}
+
+/* sidebar styles
+--------------------------------------------------------*/
+
+.sidebar {
+	font-size: 1.2em;
+}
+
+.sidebar > div {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.sidebar img {
+	width: 60%;
+	margin: 10px;
+}
+
+.sidebar span {
+	font-weight: bold;
+	font-size: 1.5em;
+	color: #39c8ce;
+}
+
+
+/* interface styles
+----------------------------------------------------------*/
+
+
+#interface h2 {
+	font-weight: 900;
+}
+
+#two {
+	font-weight: bold;
+}
+
+/* gauge-styles
+--------------------------------------------------*/
+#my-canvas-element {
+	width: 98%;
+}
+
+
+#relapse-meter {
+	font-size: 4em;
+	color: #39c8ce;
+    font-weight: bold;
+    position: absolute;
+    right: 33%;
+    bottom: -45px;
+}
+
+/* chart styles
+--------------------------------*/
+#workout-line-chart,
+#workout-donut-chart,
+#workout-bar-chart,
+.table-panel {
+	background-color: #6B64AB;
+}
+
+#table-div {
+	background-color: #6B64AB;
+	padding: 15px;
+}
+
+#multi-bar-chart-div {
+	width: 100%;
+	height: 250px;
+}
+
+#workout-line-chart,
+#workout-donut-chart,
+#workout-bar-chart,
+#days-clean-div,
+#last-workout-div,
+#workout-days-div {
+	padding: 5px;	
+}
+
+.mid-row {
+	margin-top: 20px;
+}
+
+.mid-row button {
+	margin: 0 auto;
+}
+
+.stats h1 {
+	color: #39c8ce;
+	font-size: 4em;
+	font-weight: bold;
+}
+
+.stats > .col-sm-3 {
+	height: 110px;
+}
+
+.stats > .col-sm-3:nth-child(2),
+.stats > .col-sm-3:nth-child(3),
+.stats > .col-sm-3:nth-child(4) {
+	padding-top: 15px;
+}
+
+
+/* Log workout styles
+------------------------*/
+.navbar-nav button {
+	width: 97.5625px;
+	margin-right: 1em;
+}
+
+#log-workout-btn {
+	background-color: #554cac;
+}
+
+#log-relapse-btn {
+	background-color: #dd4cab;
+}
+
+#logout-btn {
+	color: #554cac;
+	font-weight: 900;
+}
+
+#logout-btn:hover {
+	color: #39c8ce;
+}
+
+
+/* DASHBOARD STYLES
+-------------------------------------*/
+#workout-line-chart svg {	
+	height: 250px;
+	padding: 0 1em;
+}
+
+#workout-line-chart h3 {
+	margin-top: 15px;
+}
+
+.chart-couple {
+	margin-top: 20px;
+}
+
+.chart-couple svg {
+	height: 250px;
+}
+
+text {
+	stroke: white;
+}
+
+
+#workout-line-chart button {
+	width: 64.75px;
+	margin-right: .5em;
+	outline: none;
+	color: white;
+	font-size: 1em;
+	border: none;
+	background-color: inherit;
+}
+
+#workout-line-chart button:hover {
+	background-color: #554cac;
+}
+
+#workout-line-chart line {
+	stroke: none;
+}
+
+#workout-bar-chart line {
+	stroke: none;
+}
+
+/* daily fitness challenge styles
+---------------------------------------*/
+
+#support-div {
+	background-color: #6B64AB;
+	color: white;
+	width: 91%;
+	margin: 0 auto;
+}
+
+#support-div ul {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#support-div a {
+	color: white;
+}
+
+#support-div a:hover {
+	color: #39c8ce;
+}
+
+#fitness-challenge-btn {
+	background-color: #39c8ce;
+}
+
+#fitness-challenge-btn:hover {
+	background-color: #248488;
+}
+
+.panel {
+	border-radius: 0;
+}
+
+.panel-default > .panel-heading {
+	background-color: #39c8ce;
+	color: white;
+}
+
+#coupon-div {
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+	border: 1px solid #39c8ce;
+	padding: 15px;
+	border-radius: 50%;
+}
+
+#coupon-div > img {
+	width: 50%;
+	margin: 0 auto;
+}
+
+
+/* form styles
+------------------------------------*/
+
+.radio-inline {
+	margin: 0 10px;
+}
+
+
+/* Modal styles 
+------------------------------------*/
+.modal {
+	font-size: 1.7em;
+}
+
+#workout-modal, #relapse-modal {
+	color: #25252d;
+	/*font-size: 1.7em;*/
+}
+
+.nvd3 text {
+	font: lighter 14px 'ProximaNova';
+	color: white;
+	fill: white;
+	stroke: white;
+}

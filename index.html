@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<head>
+	<title>Fitness Monkey Site</title>
+	<!-- meta data -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- bootstrap 3 -->
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-3.3.5/css/bootstrap.min.css">
+	<!-- my styles -->
+	<link rel="stylesheet" type="text/css" href="lib/nv.d3.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript" src="lib/d3.js"></script>
+	<script type="text/javascript" src="lib/nv.d3.min.js"></script>
+</head>
+
+<body>
+	<!-- wrapper for entire page -->
+	<div class="wrapper">
+		
+		<!-- fm-banner container-fluid for first two rows -->
+		<div class="fm-banner ">
+
+			<!-- Navbar content -->
+		 	<nav class="my-navbar navbar navbar-inverse">			
+				    <img id="logo" class="pull-left" src="assets/fitness_monkey_logo_new.png">
+				    <a id="logo-brand" class="navbar-brand" href="index.html"> Fitness Monkey</a>
+
+			  	 <!--Brand and toggle get grouped for better mobile display -->
+				 <div class="navbar-header">
+				  	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" 	aria-expanded="false">
+		        		<span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+	      			</button>
+				 </div>
+				  <div class="collapse navbar-collapse">
+				 	<ul class="navbar-nav nav navbar-right ">
+				 		<li><a href="#">Home</a></li>
+				 		<li><a href="#about-section">About</a></li>
+				 		<li><a href="views/dashboard.html">Demo</a></li>
+				 		<li><a href="#features">Features</a></li>
+				 	</ul>
+				 </div> 
+			</nav>
+				    	
+			<div class="row">
+				<div class="col-md-12 text-center margin-top-45 fitness p">
+					<h1>FITNESS MONKEY</h1>
+					<p>A PERSONAL HEALTH & RECOVERY TRACKER</p>
+				</div>
+			</div> <!-- row1 -->
+			
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<a href="views/dashboard.html"><button type="button" class="btn btn-primary btn-lg demo-btn">TRY OUR DEMO</button></a>
+				</div>
+			</div> <!-- row2 -->
+						
+		</div> <!-- end of fm-banner container-fluid-->
+				
+			<!-- members numbers -->
+			<div class="row">
+				<div class="col-md-12 running">
+					<h2 class="text-center">Over <span class="num">5638</span> days free from addiction and counting</h2>
+				</div>
+			</div>
+
+			<!-- features section -->
+			<div class="row top">
+				<div class="col-md-12 text-center">
+					<h2>FITNESS MONKEY FEATURES</h2>
+				</div>
+			</div>
+
+			<div id="features" class="row text-center">
+				<div class="col-md-4  description-graphs p pic">
+
+					<h2>REAL-TIME <span>CHARTS</span></h2>
+					<figure class = "effect-ruby">
+						<img class="images" src="assets/donut_chart.png">
+						<figcaption>
+							<p>Charts monitor the best workouts<br>for staying clean</p>
+							<a href="#">View more</a>
+						</figcaption>
+					</figure>
+				
+				</div>
+
+				<div class="col-md-4  pic">
+							<h2><span>RELAPSE</span> METER</span></h2>
+					<figure class = "effect-ruby">
+						<img class="images" src="assets/relapse_meter.png">
+						<figcaption>
+							<p>Receive daily updates based on<br> urge to relapse</p>
+							<a href="#">View more</a>
+						</figcaption>
+					</figure>	
+				</div>
+
+				<div class="col-md-4  pic">
+							<h2>DAILY <span>CHALLENGE</span></h2>
+					<figure class = "effect-ruby">
+						<img class="images" src="assets/fitness_challenge.png">
+						<figcaption>
+							<p>Take the Daily Fitness Challenge<br>and measure up</p>
+							<a href="#">View more</a>
+						</figcaption>
+					</figure>
+					
+				</div>
+			</div>
+
+			<section class="container" id="about-section">
+				
+				<div class="jumbotron text-justify">
+					<h2 class="text-center text-info"><u>Founder's Story</u></h2><br>
+					<div class="row">
+						<div class="col-sm-4">
+							<img src="assets/bottle_shoes.png" class="img-responsive img-rounded">
+						</div>
+						<div class="col-sm-8">
+							<p class="lead">"15 years ago, my addiction to drugs & alcohol spiraled out of control and led me to a life sentence in prison...</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-8">
+							<p class="lead">...Realizing the harm that I caused would motivate me to stop using and start looking to fitness for a new way of life.</p>
+						</div>
+						<div class="col-sm-4">
+							<img src="assets/chris.png" class="img-responsive img-rounded">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<img src="assets/fitness_monkey_logo_new.png" class="img-responsive img-rounded">
+						</div>
+						<div class="col-sm-8">
+							<p class="lead">Fitness Monkey was created to empower others overcome substance abuse by developing a healthy addiction to fitness."</p>
+							<div class="pull-right">
+								<p class="lead">Chris Schuhmacher<br>Founder of Fitness Monkey</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<div class="container">
+				<div class="row text-center">
+					<h3>CLICK HERE TO JOIN THE FITNESS MONKEY RECOVERY REVOLUTION!</h3>
+					<a href="views/dashboard.html">
+						<button type="button" class="btn btn-primary btn-lg demo-btn">TRY OUR DEMO</button>
+					</a><br>
+				</div>
+			</div>
+
+			<!-- footer -->
+			<div class="footer">
+				<div class="row text-center">
+					<div class="col-sm-4">
+						<img class="img-responsive" src="assets/code7370.jpg">
+					</div>
+
+					<div class="col-sm-4">
+						<h2 class="text-info">Created by Team Fitness Monkey</h2>
+						<ul class="list-unstyled">
+							<li>Chris Schuhmacher</li>
+							<li>Jorge Heredia</li>
+							<li>Joe Demerson</li>
+							<li>Luke Padgett</li>
+						</ul>
+						<small>&copy Fitness Monkey 2015</small>
+					</div>
+
+					<div class="col-sm-4">
+						<img src="assets/tlmlogo.png">
+					</div>
+				</div>
+
+			</div>
+	</div> <!--end of wrapper for entire page -->
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="bootstrap/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/script.js"></script>
+</body>
+</htm>
+	
+	
+					
+
+
+
+		
+
+
+
+
+			
+

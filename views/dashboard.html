@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<head>
+	<title>Fitness Monkey Site</title>
+	<!-- meta data -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- bootstrap 3 -->
+	<link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-3.3.5/css/bootstrap.min.css">
+	<!-- my styles -->
+	<link rel="stylesheet" type="text/css" href="../lib/nv.d3.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script type="text/javascript" src="../lib/d3.js"></script>
+	<script type="text/javascript" src="../lib/nv.d3.min.js"></script>
+
+</head>
+
+<body>
+	<div id="wrapper">
+		<!-- Navbar content -->
+		<!-- Navbar content -->
+		<nav id="my-navbar" class="navbar navbar-inverse">
+			<div class="container-fluid">
+			  <!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+	        		<span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+	      			</button>
+				    	
+				    <img id="logo" class="pull-left" src="../assets/fitness_monkey_logo_new.png">
+				    <a  id="logo-brand" class="navbar-brand" href="index.html"> Fitness Monkey</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      
+			      <ul class="nav navbar-nav navbar-right">
+					<li class="visible-xs text-center">
+						<a href="#charts">View Charts</a>
+					</li>
+					<li class="visible-xs text-center">
+						<a href="#fitness-challenge">Daily Fitness Challenge</a>
+					</li>
+			        <li>
+			        	<button  type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#workout-modal" id="log-workout-btn" type="button" class="btn navbar-btn btn-success">log workout</button>
+						<button id="log-relapse-btn" type="button" class="btn navbar-btn btn-danger pull-right" data-toggle="modal" data-target="#relapse-modal">log relapse</button>
+					</li>
+					<li><a id="logout-btn" href="index.html" class="text-center">Log Out</a></li>
+			        
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+		</nav>
+		<!-- <input type="color"> -->
+
+		<div id="main-page" class="container-fluid">
+
+			<div class="col-sm-2 sidebar">
+				<div>
+					<div class="row">
+						<img class="img-responsive" src="../assets/fitness_monkey_logo_new.png">
+					</div>					
+						
+				
+					<div id="interface" class="row text-justify">
+						<h1 id="greeting">Morning, </h1>
+						<h2 id="member-name"></h2>
+						<p id="two">Congratulations on <span class="clean-time"></span> days clean.</p>
+						<p id="three">Your relapse-meter is in the <span id="color-indicator">yellow</span>, so take some time for self-care.</p>
+						<p id="four">It's been <span class="last-workout"></span> days since your last workout, but no worries. </p>
+						<p id="five">Take the Daily Fitness Challenge. It will get you in gear!</p>	
+					</div>						
+					
+
+					<div class="row">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-10">
+				<div class="container-fluid">
+					<div class="row stats">
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-xs-3">
+									<h3>Relapse Meter</h3>
+								</div>
+								<div class="col-xs-9">
+									<canvas id="my-canvas-element"></canvas>
+									<p class="lead text-center" id="relapse-meter">3.7</p>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-xs-5 text-right">
+									<h1 class="clean-time">31</h1>
+								</div>
+								<div class="col-xs-7">
+									<h3>Days<br> Clean</h3>
+								</div>
+							</div>
+						</div>
+						<div  class="col-sm-3">
+							<div class="row">
+								<div class="col-xs-5 text-right">
+									<h1 class="last-workout">3</h1>
+								</div>
+								<div class="col-xs-7">
+									<h3>Days Since<br>Last Workout</h3>
+								</div>
+							</div>	
+						</div>
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-xs-5">
+									<h1 class="total-workouts text-right">7</h1>
+								</div>
+								<div class="col-xs-7">
+									<h3>Workout Days<br>in a Row</h3>
+								</div>
+							</div>
+						</div>	
+					</div>
+
+					<div id="dashboard" class="row">
+						<div  class="col-sm-9 mid-row">
+							<div id="workout-line-chart">
+								<button id="weekly" class="pull-right btn btn-primary btn-sm">weekly</button>
+								<button id="daily" class="pull-right btn btn-primary btn-sm">daily</button>
+								<h3>Average duration of workouts by day/week</h3>
+								<svg></svg>
+							</div>
+
+							<div class="row chart-couple">
+								<div class="col-sm-6">
+									<div id="workout-donut-chart">
+										<h3>Average urge to relapse by type</h3>
+										<svg></svg>				
+									</div>						
+								</div>
+								<div class="col-sm-6">
+									<div id="workout-bar-chart" >
+										<h3>Favorites</h3>
+										<svg></svg>				
+									</div>
+								</div>							
+							</div>
+
+						</div>
+
+
+						<div class="col-sm-3 mid-row">
+
+
+							<div id="table-div">
+								<h3 class="text-center">Daily Fitness Challenge</h3>
+								<h4 id="date-text" class="text-center">Wed 12/2</h4>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Exercise</th>
+											<th>Done</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td>50 pushups</td>
+											<td><input type="checkbox" value="10"></td>
+										</tr>
+										<tr>
+											<td>50 situps</td>
+											<td><input type="checkbox" value="10"></td>
+										</tr>
+										<tr>
+											<td>50 pullups</td>
+											<td><input type="checkbox" value="10"></td>
+										</tr>
+										<tr>
+											<td>100 jumping jacks</td>
+											<td><input type="checkbox" value="10"></td>
+										</tr>
+										<tr>
+											<td>5 mile jog</td>
+											<td><input type="checkbox" value="10"></td>
+										</tr>
+									</tbody>
+								</table>
+								<center>
+									<button type="button" class="btn btn-success" data-toggle="modal" data-target="#fitness-challenge-modal" id="fitness-challenge-btn" type="button" class="btn navbar-btn btn-success">Done</button>
+								</center>
+							</div>
+
+							<div class="row">
+								<div id="support-div">
+			    					<h3 class='text-center'>Community / Support</h3>
+			    					<ul class="list-unstyled">
+			    						<li><p><span class="glyphicon glyphicon-user"></span> <a href="#">Ed Ballenger (sponsor)</a></p></li>
+			    						<li><p><span class="glyphicon glyphicon-user"></span> <a href="#">AA/NA meetings</a></p></li>
+			    						<li><p><span class="glyphicon glyphicon-user"></span><a href="#">Rehab Center</a></p></li>
+			    					</ul>
+								</div>
+							</div>
+							
+
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- Workout Modal -->
+		<div class="modal fade" id="workout-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		   		<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        		<h3 class="modal-title text-center" id="myModalLabel">Log Your Workout</h3>
+		      		</div>
+		   			<form id="log-workout-form">
+			      		<div class="modal-body">
+				  			<div class="form-group">
+				    			<label for="type-input">What type of workout?</label>
+				    			<input type="text" class="form-control" id="type-input" placeholder="Type of workout">
+				  			</div>
+				  			<div class="form-group">
+				    			<label for="duration-input">What was the duration?</label>
+				    			<input type="number" class="form-control" id="duration-input" placeholder="duration in minutes" min="0" step="5">
+				  			</div>
+				  			<div class="form-group">
+				    			<label for="intensity-input">What was the intensity</label><br>
+				    			<label class="radio-inline">
+									<input type="radio" name="intensity" value="1"> 1
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="intensity"  value="2"> 2
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="intensity" value="3"> 3
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="intensity" value="4"> 4
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="intensity"  value="5"> 5
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="intensity" value="6"> 6
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="intensity" value="7"> 7
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="intensity"  value="8"> 8
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="intensity" value="9"> 9
+								</label>
+				  			</div>					  	
+				  			<div class="form-group">
+				    			<label for="relapse-input">Rate your urge to relapse</label><br>
+				    			<label class="radio-inline">
+									<input type="radio" name="relapse-urge" value="1"> 1
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="relapse-urge"  value="2"> 2
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="relapse-urge" value="3"> 3
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="relapse-urge" value="4"> 4
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="relapse-urge"  value="5"> 5
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="relapse-urge" value="6"> 6
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="relapse-urge" value="7"> 7
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="relapse-urge"  value="8"> 8
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="relapse-urge" value="9"> 9
+								</label>
+				  			</div>					  	
+				  			<div class="form-group">
+				    			<label for="fun-factor-input">How fun was this workout?</label><br>
+				    			<label class="radio-inline">
+									<input type="radio" name="fun" value="1"> 1
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="fun"  value="2"> 2
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="fun" value="3"> 3
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="fun" value="4"> 4
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="fun"  value="5"> 5
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="fun" value="6"> 6
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="fun" value="7"> 7
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="fun"  value="8"> 8
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="fun" value="9"> 9
+								</label>
+				  			</div>
+			      		</div>
+			     		<div class="modal-footer">
+			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button data-dismiss="modal" type="button" class="btn btn-success">Submit</button>
+			     		</div>
+		     		</form>
+		    	</div><!-- modal content -->
+		  	</div>
+		</div><!-- Modal -->
+
+		<!-- Relapse Modal -->
+		<div class="modal fade" id="relapse-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        		<h3 class="modal-title text-center" id="myModalLabel" >Log Relapse</h3>
+		      		</div>
+		      		<div class="modal-body">
+		        		<form id="log-relapse-form">
+				  			<div class="form-group">
+				    			<label for="substance-input">What substance?</label><br>
+				    			<label class="radio-inline">
+								<input type="radio" name="substance-type" value="alcohol">
+								Alcohol
+								</label>
+								<label class="radio-inline">
+						  		<input type="radio" name="substance-type" value="drugs">
+						  		Drugs
+								</label>
+								<label class="radio-inline">
+						  		<input type="radio" name="substance-type" value="other">
+						  		Other
+								</label>
+				  			</div>
+						  	<div class="form-group">
+						    	<label for="duration-input">Where did your relapse occur?</label>
+						    	<input type="text" class="form-control" id="location-input" placeholder="enter location of relapse" min="0">
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="associations-input">Who were you with?</label><br>
+						    	<label class="radio-inline">
+									<input type="radio" name="association-type" value="friends">
+									Friends
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="association-type" value="family">
+								  	Family
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="association-type" value="alone">
+								  	Alone
+								</label>
+						  	</div>					  	
+						  	<div class="form-group">
+						    	<label for="emotion-input">What emotions were you experiencing?</label><br>
+						    	<label class="radio-inline">
+									<input type="radio" name="emotion-type" value="hurt">
+									Hurt
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="emotion-type" value="angry">
+								  	Angry
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="emotion-type" value="lonely">
+								  	Lonely
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="emotion-type" value="tired">
+								  	Tired
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="emotion-type" value="other">
+								  	Other
+								</label>
+						  	</div>		
+
+						  	<label for="emotion-input">Attitude moving forward?</label><br>			  	
+						  	<div class="radio">
+							  	<label>
+							    	<input type="radio" name="attitude-type" value="positive" >
+							    	Positive
+							  	</label>
+							</div>
+							<div class="radio">
+							  	<label>
+							    	<input type="radio" name="attitude-type" value="angry">
+							    	Angry
+							  	</label>
+							</div>
+							<div class="radio">
+							  	<label>
+							    	<input type="radio" name="attitude-type" value="depressed">
+							    	Depressed
+							  	</label>
+							</div>
+							<div class="radio">
+								<label>
+								<input type="radio" name="attitude-type" value="determined">
+									Determined
+								</label>
+							</div>
+		   	 			</div>
+		    			<div class="modal-footer">
+		        			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        			<button data-dismiss="modal" type="button" class="btn btn-primary">Log Relapse</button>
+		    			</div>
+					</form>
+	    		</div>
+	  		</div>
+		</div>
+	</div>
+
+		<!-- Relapse Modal -->
+		<div class="modal fade" id="fitness-challenge-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        		<h3 class="modal-title text-center" id="myModalLabel">Fitness Challenge Results</h3>
+		      		</div>
+		      		<div class="modal-body text-center">
+		      			<div class="row">
+		        			<h1>Way to go!<h1>
+		        			<div class="col-xs-6">
+		        				<div class="panel panel-default">
+		        					<div class="panel-heading">
+		        						<h4>Your Score</h4>
+		        					</div>
+		        					<div class="panel-body">
+		        						<h1 class="fitness-challenge-score"></h1>
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="col-xs-6">
+		        				<div class="panel panel-default">
+		        					<div class="panel-heading">
+		        						<h4>FitMo Average</h4>
+		        					</div>
+		        					<div class="panel-body">
+		        						<h1 class="fitness-challenge-score-avg"></h1>
+		        					</div>
+		        				</div>
+		        			</div>
+		      			</div>
+
+		      			<div class="row">
+		      				<h2>Achievement Moment Reward</h2>
+		      				<div id="coupon-div">
+		      					<img class="img-responsive" src="../assets/jambaa_juice.png">
+		      				</div>
+		      				<h2>Get a free smoothie at Jamba Juice</h2>
+						</div>
+		    		</div>
+
+		  		</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="../lib/jquery.js"></script>
+	<script type="text/javascript" src="../lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../lib/moment.min.js"></script>
+	<script type="text/javascript" src="../scripts/d3_charts.js"></script>
+	<script type="text/javascript" src="../scripts/script.js"></script>
+	<script type="text/javascript" src="../scripts/dashboard.js"></script>
+	<script type="text/javascript" src="../lib/gauge.js"></script>
+
+</body>
+</html>
